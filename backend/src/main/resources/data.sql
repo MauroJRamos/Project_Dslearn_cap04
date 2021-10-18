@@ -21,3 +21,7 @@ INSERT INTO tb_offer (edition, start_Moment, end_Moment, course_id) VALUES ('2.0
 INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Trilha HTML', 'Trilha principal do curso', 1, 'https://www.publicdomainpictures.net/pictures/280000/velka/family-relationship-course.jpg', 1, 1);
 INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Forum', 'Tire suas dúvidas', 2, 'https://www.publicdomainpictures.net/pictures/280000/velka/family-relationship-course.jpg', 2, 1);
 INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Lives', 'Lives exclusivas para a turma', 3, 'https://www.publicdomainpictures.net/pictures/280000/velka/family-relationship-course.jpg', 0, 1);
+
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capitulo 01', 'Neste capítulo vamos começar', 1, 'https://www.publicdomainpictures.net/pictures/280000/velka/family-relationship-course.jpg', 1, null);
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capitulo 02', 'Neste capítulo vamos continuar', 2, 'https://www.publicdomainpictures.net/pictures/280000/velka/family-relationship-course.jpg', 1, 1);
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capitulo 03', 'Neste capítulo vamos finlizar', 3, 'https://www.publicdomainpictures.net/pictures/280000/velka/family-relationship-course.jpg', 1, 2);
