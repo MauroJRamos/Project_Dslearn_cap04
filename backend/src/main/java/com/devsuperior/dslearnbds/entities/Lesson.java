@@ -1,7 +1,9 @@
 package com.devsuperior.dslearnbds.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -14,12 +16,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "tb_lesson")
-@Inheritance(strategy = InheritanceType.JOINED)//Cria uma tabela para cada classe no banco
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Lesson implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -28,22 +30,24 @@ public abstract class Lesson implements Serializable {
 	private Long id;
 	private String title;
 	private Integer position;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "section_id")
 	private Section section;
 	
+	@OneToMany(mappedBy = "lesson")
+	private List<Deliver> deliveries = new ArrayList<>();
 	
 	@ManyToMany
-	@JoinTable(name = "tb_lessons_done", 
-				joinColumns = @JoinColumn(name = "lesson_id"),
-				inverseJoinColumns = {
-						@JoinColumn(name = "user_id"),
-						@JoinColumn(name = "offer_id")
-				}
+	@JoinTable(name = "tb_lessons_done",
+		joinColumns = @JoinColumn(name = "lesson_id"),
+		inverseJoinColumns = {
+				@JoinColumn(name = "user_id"),
+				@JoinColumn(name = "offer_id")
+		}
 	)
-	private Set<Enrollment> enrollmentDone = new HashSet<>();
-
+	private Set<Enrollment> enrollmentsDone = new HashSet<>();
+	
 	public Lesson() {
 	}
 
@@ -87,8 +91,12 @@ public abstract class Lesson implements Serializable {
 		this.section = section;
 	}
 
-	public Set<Enrollment> getEnrollmentDone() {
-		return enrollmentDone;
+	public Set<Enrollment> getEnrollmentsDone() {
+		return enrollmentsDone;
+	}
+
+	public List<Deliver> getDeliveries() {
+		return deliveries;
 	}
 
 	@Override
@@ -115,5 +123,4 @@ public abstract class Lesson implements Serializable {
 			return false;
 		return true;
 	}
-
 }

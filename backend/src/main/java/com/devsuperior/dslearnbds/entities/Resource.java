@@ -28,7 +28,7 @@ public class Resource implements Serializable {
 	private Integer position;
 	private String imgUri;
 	private ResourceType type;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "offer_id")
 	private Offer offer;
@@ -37,7 +37,6 @@ public class Resource implements Serializable {
 	private List<Section> sections = new ArrayList<>();
 	
 	public Resource() {
-
 	}
 
 	public Resource(Long id, String title, String description, Integer position, String imgUri, ResourceType type,
@@ -132,7 +131,4 @@ public class Resource implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-
 }

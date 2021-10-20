@@ -20,7 +20,7 @@ public class EnrollmentPK implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "offer_id")
 	private Offer offer;
-
+	
 	public EnrollmentPK() {
 	}
 
@@ -76,5 +76,4 @@ public class EnrollmentPK implements Serializable {
 			return false;
 		return true;
 	}
-
 }
