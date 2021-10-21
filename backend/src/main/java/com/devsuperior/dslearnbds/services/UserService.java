@@ -25,8 +25,12 @@ public class UserService implements UserDetailsService{
 	@Autowired
 	private UserRepository repository;
 	
+	@Autowired
+	private AuthService authService;
+	
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
+		authService.validateSelfOrAdmin(id); //metodo que verifica se é o proprio usuário ou admin, casa o contratio lança uma exception.
 		Optional<User> obj = repository.findById(id);
 		User entity = obj.orElseThrow(() -> new ResourceNotFoundException(" Entidade não existe"));
 		return new UserDTO(entity);
