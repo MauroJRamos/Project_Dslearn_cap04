@@ -1,4 +1,4 @@
-package com.devsuperior.dslearnbds;
+package com.devsuperior.dslearnbds.dto;
 
 import java.io.Serializable;
 
